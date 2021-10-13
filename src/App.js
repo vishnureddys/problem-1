@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import ChildComponent from './rgb';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  var rows = [];
+  var i = 0;
+  var j = 0; 
+  var k = 0;
+  var v = 1;
+  while(k <= 255) {
+    if (k%15 == 0){
+      i++;
+      j++;
+      k++;
+    }
+    else if(k %3 == 0) {
+      j++;
+      k++;
+    }
+    else if(k % 5 == 0) {
+      i++;
+      k++;
+    }
+    k++;
+    if (k < 255){
+      rows.push(<ChildComponent r={i} g={j} b={k} />);
+    }
+    
+  }
+
+return <tbody>{rows}</tbody>;
 }
 
 export default App;
