@@ -1,5 +1,5 @@
 import ChildComponent from './rgb';
-
+import 'primeflex/primeflex.css';
 
 function App() {
   var rows = [];
@@ -8,6 +8,9 @@ function App() {
   var k = 0;
   var v = 1;
   while(k <= 255) {
+    if (k <= 255){
+      rows.push(<ChildComponent d ={v} r={i} g={j} b={k} />);
+    }
     if (k%15 == 0){
       i++;
       j++;
@@ -21,14 +24,13 @@ function App() {
       i++;
       k++;
     }
-    k++;
-    if (k < 255){
-      rows.push(<ChildComponent r={i} g={j} b={k} />);
+    else {
+      k++;
     }
-    
+    v++;
   }
 
-return <tbody>{rows}</tbody>;
+return <div className="p-grid">{rows}</div>;
 }
 
 export default App;
